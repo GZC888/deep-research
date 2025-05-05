@@ -7,10 +7,15 @@
   "research": {
     "common": {
       "startThinking": "Start Thinking",
+      "rethinking": "Rethinking",
       "thinkingQuestion": "Thinking Question...",
+      "writeReportPlan": "Write Report Plan",
+      "rewriteReportPlan": "Rewrite Report Plan",
       "startResearch": "Start Research",
+      "restartResearch": "Restart Research",
       "writeReport": "Write Report",
       "continueResearch": "Continue Research",
+      "indepthResearch": "In-depth Research",
       "rewriteReport": "Rewrite Report",
       "sources": "Sources",
       "thinking": "Thinking...",
@@ -37,8 +42,7 @@
       "feedbackLabel": "Your Answer (Optional)",
       "feedbackPlaceholder": "You can answer whatever you want...",
       "questions": "2.1 System Questions",
-      "reportPlan": "2.2 Research report plan",
-      "writeReportPlan": "Write Report Plan"
+      "reportPlan": "2.2 Research report plan"
     },
     "searchResult": {
       "title": "3. Information Collection",

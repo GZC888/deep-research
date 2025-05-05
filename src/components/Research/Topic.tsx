@@ -45,7 +45,7 @@ const formSchema = z.object({
 function Topic() {
   const { t } = useTranslation();
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const { question, resources, removeResource } = useTaskStore();
+  const taskStore = useTaskStore();
   const { askQuestions } = useDeepResearch();
   const { hasApiKey } = useAiProvider();
   const { getKnowledgeFromFile } = useKnowledge();
@@ -60,7 +60,7 @@ function Topic() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      topic: question,
+      topic: taskStore.question,
     },
   });
 
@@ -120,8 +120,8 @@ function Topic() {
   }
 
   useEffect(() => {
-    form.setValue("topic", question);
-  }, [question, form]);
+    form.setValue("topic", taskStore.question);
+  }, [taskStore.question, form]);
 
   return (
     <section className="p-4 border rounded-md mt-4 print:hidden">
@@ -166,11 +166,11 @@ function Topic() {
             </FormLabel>
             <FormControl onSubmit={(ev) => ev.stopPropagation()}>
               <div>
-                {resources.length > 0 ? (
+                {taskStore.resources.length > 0 ? (
                   <ResourceList
                     className="pb-2 mb-2 border-b"
-                    resources={resources}
-                    onRemove={removeResource}
+                    resources={taskStore.resources}
+                    onRemove={taskStore.removeResource}
                   />
                 ) : null}
                 <DropdownMenu>
@@ -211,8 +211,10 @@ function Topic() {
                 <span>{t("research.common.thinkingQuestion")}</span>
                 <small className="font-mono">{formattedTime}</small>
               </>
-            ) : (
+            ) : taskStore.questions === "" ? (
               t("research.common.startThinking")
+            ) : (
+              t("research.common.rethinking")
             )}
           </Button>
         </form>

@@ -7,10 +7,15 @@
   "research": {
     "common": {
       "startThinking": "开始思考",
+      "rethinking": "重新思考",
       "thinkingQuestion": "思考问题...",
+      "writeReportPlan": "撰写报告方案",
+      "rewriteReportPlan": "重写报告方案",
       "startResearch": "开始研究",
+      "restartResearch": "重新研究",
       "writeReport": "撰写报告",
       "continueResearch": "继续研究",
+      "indepthResearch": "深度研究",
       "rewriteReport": "重写报告",
       "sources": "资料来源",
       "thinking": "思考中...",
@@ -37,8 +42,7 @@
       "feedbackLabel": "您的回答（可选）",
       "feedbackPlaceholder": "畅所欲言，谈谈您的见解...",
       "questions": "2.1 系统提问",
-      "reportPlan": "2.2 研究报告方案",
-      "writeReportPlan": "撰写报告方案"
+      "reportPlan": "2.2 研究报告方案"
     },
     "searchResult": {
       "title": "3. 信息搜集",

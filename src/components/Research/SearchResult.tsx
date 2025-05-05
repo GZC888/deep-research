@@ -1,6 +1,6 @@
 "use client";
 import dynamic from "next/dynamic";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -66,6 +66,12 @@ function SearchResult() {
     stop: accurateTimerStop,
   } = useAccurateTimer();
   const [isThinking, setIsThinking] = useState<boolean>(false);
+  const unfinishedTasks = useMemo(() => {
+    return taskStore.tasks.filter((item) => item.state !== "completed");
+  }, [taskStore.tasks]);
+  const taskFinished = useMemo(() => {
+    return taskStore.tasks.length > 0 && unfinishedTasks.length === 0;
+  }, [taskStore.tasks, unfinishedTasks]);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -92,8 +98,7 @@ function SearchResult() {
   }
 
   async function handleSubmit(values: z.infer<typeof formSchema>) {
-    const { setSuggestion, tasks } = useTaskStore.getState();
-    const unfinishedTasks = tasks.filter((task) => task.state !== "completed");
+    const { setSuggestion } = useTaskStore.getState();
     try {
       accurateTimerStart();
       setIsThinking(true);
@@ -289,7 +294,7 @@ function SearchResult() {
               <Button
                 className="w-full mt-4"
                 type="submit"
-                variant={taskStore.tasks.length > 0 ? "secondary" : "default"}
+                variant="default"
                 disabled={isThinking}
               >
                 {isThinking ? (
@@ -298,6 +303,8 @@ function SearchResult() {
                     <span>{status}</span>
                     <small className="font-mono">{formattedTime}</small>
                   </>
+                ) : taskFinished ? (
+                  t("research.common.indepthResearch")
                 ) : (
                   t("research.common.continueResearch")
                 )}

@@ -81,16 +81,19 @@ function Knowledge({ open, onClose }: KnowledgeProps) {
   }
 
   function addToResources(id: string) {
-    const { addResource } = useTaskStore.getState();
+    const { resources, addResource } = useTaskStore.getState();
     const knowledge = knowledges.find((item) => item.id === id);
     if (knowledge) {
-      addResource({
-        id,
-        name: knowledge.title,
-        type: "knowledge",
-        size: getTextByteSize(knowledge.content),
-        status: "completed",
-      });
+      const isExist = resources.find((item) => item.id === id);
+      if (!isExist) {
+        addResource({
+          id,
+          name: knowledge.title,
+          type: "knowledge",
+          size: getTextByteSize(knowledge.content),
+          status: "completed",
+        });
+      }
       toast.message(
         t("knowledge.addResourceMessage", { title: knowledge.title })
       );

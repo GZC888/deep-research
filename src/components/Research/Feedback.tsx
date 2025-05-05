@@ -127,8 +127,10 @@ function Feedback() {
                     <span>{status}</span>
                     <small className="font-mono">{formattedTime}</small>
                   </>
+                ) : taskStore.reportPlan === "" ? (
+                  t("research.common.writeReportPlan")
                 ) : (
-                  t("research.feedback.writeReportPlan")
+                  t("research.common.rewriteReportPlan")
                 )}
               </Button>
             </form>
@@ -157,8 +159,10 @@ function Feedback() {
                 <span>{status}</span>
                 <small className="font-mono">{formattedTime}</small>
               </>
-            ) : (
+            ) : taskStore.tasks.length === 0 ? (
               t("research.common.startResearch")
+            ) : (
+              t("research.common.restartResearch")
             )}
           </Button>
         </div>

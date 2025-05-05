@@ -26,6 +26,7 @@ Deep Research uses a variety of powerful AI models to generate in-depth research
 - **Support for Multi-LLM:** Supports a variety of mainstream large language models, including Gemini, OpenAI, Anthropic, Deepseek, Grok, OpenAI Compatible, OpenRouter, Ollama, etc.
 - **Support Web Search:** Supports search engines such as Searxng, Tavily, Firecrawl, Exa, Bocha, etc., allowing LLMs that do not support search to use the web search function more conveniently.
 - **Thinking & Task Models:** Employs sophisticated "Thinking" and "Task" models to balance depth and speed, ensuring high-quality results quickly. Support switching research models.
+- **Support Further Research:** You can refine or adjust the research content at any stage of the project and support re-research from that stage.
 - **Local Knowledge Base:** Supports uploading and processing text, Office, PDF and other resource files to generate local knowledge base.
 - **Artifact** Supports editing of research content, with two editing modes: WYSIWYM and Markdown. It is possible to adjust the reading level, article length and full text translation.
 - **Research History:** Support preservation of research history, you can review previous research results at any time and conduct in-depth research again.

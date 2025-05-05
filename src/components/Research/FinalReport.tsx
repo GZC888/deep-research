@@ -295,8 +295,10 @@ function FinalReport() {
                   <span>{status}</span>
                   <small className="font-mono">{formattedTime}</small>
                 </>
-              ) : (
+              ) : taskStore.finalReport === "" ? (
                 t("research.common.writeReport")
+              ) : (
+                t("research.common.rewriteReport")
               )}
             </Button>
           </form>
